@@ -3,7 +3,7 @@ const button = getElementById('entrar')
 
 button.addEventListener('click',(event)=>{
    event.preventDefault()
-   if (input.value.length <3){
+   if (input.value.length < 3){
        alert('nome muito curto!')
 }
 
