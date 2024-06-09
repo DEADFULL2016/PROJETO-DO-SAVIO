@@ -1,0 +1,31 @@
+
+body{
+    background: linear-gradient(to bottom, rgb(247, 247, 29), rgb(167, 13, 13));
+    background-attachment: fixed;
+    background-size: cover;
+    
+}
+h2{
+    font-family:'fonte1';
+    text-align: center;
+    color:red
+}
+
+h1{
+    font-family:'fonte2';
+    text-align: center;
+    color: red;
+}
+p {
+    text-align: center;
+}
+
+@font-face {
+    font-family: "fonte1";
+    src: url(DELICIOZO.ttf);
+}
+
+@font-face {
+    font-family:"fonte2";
+    src: url(JEMROKpersonal\ use.ttf);
+}
