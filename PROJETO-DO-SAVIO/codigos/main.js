@@ -23,7 +23,10 @@ entrar.addEventListener('click',(event)=>{
      if (input.value.length == 0){
          alert('digite seu nome para continuar!')
   }     
-  else{window.repa.location.href = 'menu inicial.html'}
+  else{
+    window.location.href = './menu inicial.html'
+
+}
 }
 
  }
