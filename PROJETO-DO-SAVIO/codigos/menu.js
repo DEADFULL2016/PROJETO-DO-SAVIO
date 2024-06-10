@@ -1,4 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const button = document.getElementById('carrinho');
-    const button = document.getElementById('detalhes');
+    constbutton = document.getElementById('carrinho');
+    constbutton = document.getElementById('detalhes');
 })
