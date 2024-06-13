@@ -2,13 +2,25 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: orange;
+    background:red;
+}
+h1 {
+    color: #f0f0f0;
+    font-family: 'font1';
 }
 header {
-    background-color: #f8f8f8;
-    padding: 20px;
+    background-color:orange;
+    padding: 10px;
     text-align: center;
-    border-bottom: 2px solid #000;
+    border-bottom: 5px solid #ffe877;
+}
+@font-face {
+    font-family:"font1";
+    src: url('JEMROKpersonal\ use.ttf');
+}
+@font-face {
+    font-family:"fonnt2";
+    src: url('DELICIOZO.ttf');
 }
 .menu-icon {
     position: absolute;
@@ -17,8 +29,8 @@ header {
 }
 .menu-icon div {
     width: 30px;
-    height: 5px;
-    background-color: #000;
+    height: 4px;
+    background-color: #ffffff;
     margin: 6px 0;
 }
 .container {
@@ -28,12 +40,13 @@ header {
     padding: 20px;
 }
 .item {
-    border: 5px solid red;
-    border-radius: 15%;
+    background-color: orange;
+    border: 5px solid orange;
+    border-radius: 25%;
     width: 30%;
-    margin: 10px 0;
+    margin: 20px 20px;
     text-align: center;
-    padding: 10px;
+    padding: 5px;
 }
 .item img {
     width: 100%;
@@ -48,7 +61,10 @@ header {
 
 .item .info {
     font-weight: bold;
-    color: orange;
+    font-size: 200%;
+    color: rgb(255, 255, 255);
+    font-family:'fonnt2';
+
 }
 .hover {
     position: relative;
