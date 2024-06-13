@@ -1,15 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const input = document.getElementById('nome');
-    const button = document.getElementById('entrar');
+const button = document.querySelector('.entrar')
 
-    button.addEventListener('click', (event) => {
-        event.preventDefault();
-        if (input.value.length == 0) {
-            alert('Digite seu nome para continuar!');
-        } else if (input.value.length < 3) {
-            alert('Nome muito curto!');
-        } else {
-            window.location.href = 'menu inicial.html'; 
-        }
-    });
-});
+const email = document.querySelector("#email").value;
+const password = document.querySelector("#password").value;
+console.log(email)
+
+button.addEventListener('click',(e) => {
+    e.preventDefault()
+    if (password.value.lengh==0){
+        addEventLi
+    }
+
+    window.location.href = 'menu inicial.html'; 
+})

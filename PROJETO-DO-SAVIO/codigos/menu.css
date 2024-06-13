@@ -41,22 +41,24 @@ header {
 }
 .item {
     background-color: orange;
-    border: 5px solid orange;
+    border: 1px solid orange;
     border-radius: 25%;
-    width: 30%;
+    width: 20%;
     margin: 20px 20px;
     text-align: center;
     padding: 5px;
 }
+
+
+
 .item img {
-    width: 100%;
+    width: 45%;
     height: auto;
 }
 
 .item .preco{
- color: #000000;
+ color: #6aff00;
  font-weight: bold;
- background-color: #f0f0f0;
 }
 
 .item .info {
