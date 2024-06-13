@@ -59,11 +59,7 @@ body {
     color: #ffffff;
     border: none;
     cursor: pointer;
-  }n-height: 100vh;
-    background: (to bottom, rgb(247, 247, 29), rgb(167, 13, 13));
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center; 
+  } 
   }
   .container {
     width: 300px;

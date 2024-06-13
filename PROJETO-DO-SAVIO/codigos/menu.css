@@ -5,15 +5,25 @@ body {
     background:red;
 }
 h1 {
-    color: #f0f0f0;
     font-family: 'font1';
+    color: #fff;
 }
 header {
+    margin: 3%;
+    align-items: center;
     background-color:orange;
-    padding: 10px;
+    padding: 1px;
     text-align: center;
-    border-bottom: 5px solid #ffe877;
+    border-bottom: 3px solid #ffe877;
+    border-radius: 10px;
 }
+
+.carrin {
+    height: 30vh;
+    align-items: center;
+
+}
+
 @font-face {
     font-family:"font1";
     src: url('JEMROKpersonal\ use.ttf');
@@ -43,13 +53,16 @@ header {
     background-color: orange;
     border: 1px solid orange;
     border-radius: 25%;
-    width: 20%;
-    margin: 20px 20px;
+    width: 25%;
+    margin: 15px 20px;
     text-align: center;
     padding: 5px;
 }
 
-
+button {
+    border-radius: 15%;
+    background-color: yellow;
+}
 
 .item img {
     width: 45%;
