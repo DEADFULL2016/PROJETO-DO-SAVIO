@@ -1,30 +1,736 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efeito Hover com Aumento de Tamanho</title>
-    <style>
-        .item {
-            width: 100px;
-            height: 100px;
-            background-color: #3498db;
-            transition: transform 0.01s ease;
-            display: inline-block;
-            text-align: center;
-            line-height: 100px;
-            color: white;
-            font-size: 20px;
-            margin: 10px;
-        }
-        .item:hover {
-            transform: scale(1.2);
-        }
-    </style>
+  <title>Tela de Login</title>
+  <style>
+ @import url(./styles.css);
+
+#top-bar label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 25px;
+  border-radius: 4px;
+  border: none;
+  padding: 0 4px;
+  color: #000000aa;
+  background: #fff;
+}
+
+#top-bar label img {
+  width: 20px;
+  height: 20px;
+}
+
+#top-bar input {
+  width: 100%;
+  border: none;
+  padding: 0 10px;
+  color: #000000aa;
+}
+
+#top-bar input::placeholder {
+  color: #0000004f;
+}
+
+#top-bar input:focus {
+  outline: 0;
+  color: #000;
+  background: #ffffffc5;
+}
+
+#progress-bar {
+  width: 70vw;
+  background-color: white;
+  padding: 4px 0;
+  margin: 0 2px;
+  margin-top: 8px;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: space-around;
+}
+
+#progress-bar .progess-section {
+  transform: translate(4px, 4px);
+  text-decoration: none;
+  color: #000;
+  font-family: var(--font-family);
+}
+
+@keyframes appearBorder {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+#progress-bar .active::after {
+  content: "";
+  display: block;
+  border-radius: 4px;
+  height: 3px;
+  background: red;
+  animation: appearBorder 0.3s ease;
+}
+
+#progress-bar a {
+  cursor: pointer;
+}
+
+main {
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 12px 8px;
+  width: 70vw;
+}
+
+#menu section h1 {
+  font-size: var(--header);
+  font-family: var(--font-family);
+  letter-spacing: 0.05em;
+}
+
+.items-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 10px 4px;
+  padding: 8px;
+  width: 60vw;
+  margin: 0 auto;
+}
+
+@media (max-width: 1024px) {
+  .items-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+
+.item-card {
+  display: flex;
+  min-width: 300px;
+  height: 150px;
+  background: white;
+  box-shadow: var(--box-shadow);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.item-button-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.item-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.add-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  font-weight: 600;
+  font-size: .9em;
+  color: #fff;
+  background: #353333;
+  border: none;
+  box-shadow: var(--box-shadow-sm);
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.add-button:hover {
+  cursor: pointer;
+  background: #3b3a3ae0;
+}
+
+.item-img {
+  min-width: 150px;
+  max-width: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.item-card input {
+  width: 40px;
+  height: 20px;
+  font-size: .8em;
+  text-align: center;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 8px;
+  width: 100%;
+}
+
+.item-card > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+#toggle-button {
+  position: fixed;
+  right: 0px;
+  z-index: 1;
+  border-radius: 8px 0 0 8px;
+  background: var(--secondary);
+  width: 30px;
+  height: 30px;
+  transition: scale 0.2s ease-out;
+}
+
+#toggle-button:hover {
+  cursor: pointer;
+  scale: 1.05;
+  filter: opacity(0.9);
+}
+
+.hide {
+  transform: translate(100%, 0);
+  transition: transform 0.2s ease-in;
+}
+
+.appear {
+  transform: translate(0, 0);
+  transition: transform 0.2s ease-in;
+}
+
+#cart {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow-y: hidden;
+  position: sticky;
+  top: 8px;
+  right: 0;
+  max-height: 80vh;
+  min-width: 30vw;
+  border: 2px solid var(--primary);
+  border-radius: 12px;
+  padding: 8px;
+}
+
+#cart > span {
+  font-size: var(--text) 0.3em;
+  font-weight: 600;
+}
+
+#cart-item-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  height: 50%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow-sm);
+  border: 2px solid #f0f0f0;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  box-shadow: var(--box-shadow-sm);
+  padding: 8px;
+  min-width: 100%;
+  border-radius: 8px;
+  transition: filter 0.3s ease-in-out;
+  position: relative;
+}
+
+.cart-item:hover {
+  cursor: pointer;
+  filter: opacity(0.8);
+}
+
+.cart-item div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: space-between;
+}
+
+.cart-item .item-quantity {
+  font-size: var(--text);
+  font-weight: 600;
+  color: #413f3f;
+}
+
+.cart-item .delete {
+  position: absolute;
+  bottom: 0; right: 0;
+  width: 24px;
+  height: 24px;
+  background: rgb(78, 75, 75);
+}
+
+.cart-item .item-price {
+  color: green;
+  background-color: #4e49491b;
+  text-align: center;
+  font-weight: 600;
+  width: fit-content;
+  padding-inline: 4px;
+  border-radius: 4px;
+}
+
+.cart-item img {
+  max-width: 100px;
+  border-radius: 4px;
+  object-fit: contain;
+  object-position: center;
+}
+
+#cart-total {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 8px;
+}
+
+#finish-button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  box-shadow: var(--box-shadow-sm);
+  font-size: var(--text);
+  font-weight: 600;
+  transition: filter 0.3s ease-in-out;
+}
+
+#finish-button:hover {
+  cursor: pointer;
+  filter: opacity(0.75);
+}
+
+thead th {
+  text-align: left;
+  font-weight: 800;
+  font-size: var(--text);
+}
+
+.popup-painel-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-painel-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  width: 300px;
+}
+  </style>
 </head>
 <body>
-    <div class="item">Item</div>
-    <div class="item">Item</div>
-    <div class="item">Item</div>
-</body>
-</html>
+  <!DOCTYPE html>
+  <html lang="pt-br">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon" />
+      <link rel="stylesheet" href="./styles/index.css" />
+      <title>Comes & bebes</title>
+    </head>
+    <body>
+      <header>
+        <div id="top-bar">
+          <div>
+            <img src="images/logo.png" alt="icon" />
+          </div>
+          <label for="search-bar">
+            <img src="images/lupa.png" alt="search" />
+            <input
+              type="text"
+              id="search-bar"
+              placeholder="Pesquise o que deseja"
+            />
+          </label>
+        </div>
+        <div id="top-config">
+          <div class="side-options"></div>
+          <div class="side-options"></div>
+          <div class="side-options"></div>
+        </div>
+      </header>
+  
+      <nav id="progress-bar">
+        <a href="#burguers" class="progess-section active">Burguers</a>
+        <a href="#pasteis" class="progess-section">Pizzas</a>
+        <a href="#sucos" class="progess-section">Bebidas</a>
+      </nav>
+  
+      <main class="menu">
+        <div id="menu">
+          <section class="menu-section" id="burguers">
+            <h1>Burguers</h1>
+            <div class="items-container">
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/xhumberto.jpeg"
+                  alt="hamburguer"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">X-Humberto</h2>
+                  <span class="item-ingredients">
+                    Molho especial X-Humberto, cebola roxa, American chesse,
+                    Alface, Tomate
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 12,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/xjuscelio.jpeg"
+                  alt="hamburguer"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">X-Juscélio</h2>
+                  <span class="item-ingredients">
+                    Molho especial de cachaça X-Juscélio, Carne, Tomate, Alface
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 16,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/xmariana.jpeg"
+                  alt="hamburguer"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">X-Mariana</h2>
+                  <span class="item-ingredients">
+                    Carne de bode, Queijo mussarela, tomate
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 12,50</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/xisDaniel.jpeg"
+                  alt="hamburguer"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Xis-Daniel</h2>
+                  <span class="item-ingredients">
+                    Milho, Alface, Tomate, Ovos, Carne de gado
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 22,13</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/xInocencio.jpeg"
+                  alt="hamburguer"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">X-Inocencio</h2>
+                  <span class="item-ingredients">
+                    Molho especial rosa, Queijo cheddar, Carne
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 17,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+  
+          <section class="menu-section" id="pasteis">
+            <h1>Pizzas</h1>
+            <div class="items-container">
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/pizzaMozean.crdownload.jpg"
+                  alt="pizza"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">πzza Mozean</h2>
+                  <span class="item-ingredients">
+                    Molho especial X-Humberto, cebola roxa, American chesse,
+                    Alface, Tomate
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 3,14</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/pizzaPaulo.jpg"
+                  alt="pizza"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Bolo Alimentar</h2>
+                  <span class="item-ingredients">
+                    Whey da growth, Tomate, Azeitonas
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 40,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/pizzaAlcides.jpeg"
+                  alt="pizza"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Pizza Alcides</h2>
+                  <span class="item-ingredients">
+                    Amido, Catupiry, Amido, Massa Especial, Amido, Amido  
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 35,99</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/pizzaGisely.jpg"
+                  alt="pizza"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Baby Pizza</h2>
+                  <span class="item-ingredients">
+                    Sauce de tomate, cheese ralado, meat
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 6,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1" value="1" />
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/pizzaAndrea.jpeg"
+                  alt="pizza"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Pizza Andrea</h2>
+                  <span class="item-ingredients">
+                    Molho especial de tomate, Massa fina
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 25,00</span>
+                      <div class="item-button">
+                        <input class="item-quantity" type="number" value="1" value="1" />
+                        <button class="add-button">+</button>
+                      </div>
+                    </div>
+  
+                  </div>
+                </div>
+              </div>
+          </section>
+  
+          <section class="menu-section" id="sucos">
+            <h1>Bebidas</h1>
+            <div class="items-container">
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/bebidaItalo.jpeg"
+                  alt="bebida"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Suco Itálo</h2>
+                  <span class="item-ingredients">
+                    Dois átomos de hidrogênio, Um átomo de enxofre, Quatro átomos de oxigênio
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 7,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/sucoWendel.jpeg"
+                  alt="bebida"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">Suco Wendel</h2>
+                  <span class="item-ingredients">
+                    Ayahuasca, Chacrona, água
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 5,50</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="item-card">
+                <img
+                  class="item-img"
+                  src="images/sucoSavio.jpg"
+                  alt="bebida"
+                />
+                <div class="item-info">
+                  <h2 class="item-name">"Suco" Sávio</h2>
+                  <span class="item-ingredients">
+                    Is this love, is this love, is this love
+                    Is this love that I'm feelin'?...
+                  </span>
+                  <div class="item-button-container">
+                    <span class="item-price">R$ 5,00</span>
+                    <div class="item-button">
+                      <input class="item-quantity" type="number" value="1"/>
+                      <button class="add-button">+</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div id="toggle-button"></div>
+        <div id="cart" class="appear">
+          <span>Carrinho</span>
+          <div id="cart-item-container"></div>
+          <div id="cart-total">
+            <table id="cart-total-table" class="cart-total">
+              <thead>
+                <th>Conceito</th>
+                <th>Valor</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="cart-total-item">Valor dos itens</td>
+                  <td class="cart-total-value">R$ 0,00</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <button id="finish-button">Finalizar compra</button>
+        </div>
+      </main>
+  
+      <footer>
+        <div id="footer-content">
+          <div id="footer-social-media">
+            <a href="#" class="footer-social">
+              <img src="images/facebook-icon.svg" alt="facebook" />
+              <span>Comes & Bebes</span>
+            </a>
+            <a href="#" class="footer-social">
+              <img src="images/insta-icon.svg" alt="instagram" />
+              <span>@comes_&_bebes</span>
+            </a>
+          </div>
+          <div id="footer-contact">
+            <a href="#" class="footer-social">
+              <img src="images/whatsapp-icon.svg" alt="whatsapp" />
+              <span>(85) 94312-7525</span>
+            </a>
+            <a href="#" class="footer-social">
+              <img src="images/email-icon.svg" alt="email" />
+              <span>comes_e_bebes@gmail.com</span>
+            </a>
+          </div>
+        </div>
+        <span id="copyright"
+          >© 2021 Comes & Bebes. Todos os direitos reservados.</span
+        >
+      </footer>
+      <script src="js/index.js" defer></script>
+      <script src="js/add-to-cart.js" defer></script>
+      <script src="js/promotion.js" defer></script>
