@@ -113,3 +113,8 @@ button {
 .options-list li:hover {
     background-color: #f0f0f0;
 }
+
+.din,.pix,.cartao {
+    border-radius: 10%;
+    width: 50px;
+}

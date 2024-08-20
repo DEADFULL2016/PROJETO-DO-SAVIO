@@ -7,8 +7,9 @@ console.log(email)
 button.addEventListener('click',(e) => {
     e.preventDefault()
     if (password.value.lengh==0){
-        addEventLi
+        alert('nao') 
     }
+    else{window.location.href = 'menu inicial.html'; }
 
-    window.location.href = 'menu inicial.html'; 
+    
 })
